@@ -8,3 +8,9 @@ type Result = {
         height: number,
     },
 }
+
+type SearchResult = {
+    query?: {
+        pages?: Result[],
+    },
+}
