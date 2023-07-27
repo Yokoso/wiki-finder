@@ -13,7 +13,16 @@ export default async function SearchResults( { params: { searchTerm } }: Props) 
   const data = await wikiData
   const results: Result[] | undefined = data?.query?.pages
 
-  return (
-    <div>Search Results</div>
+  const content = (
+    <main className='max-w-lg min-h-screen py-1 mx-auto bg-slate-200'>
+      { results 
+        ? Object.values(results).map(result => 
+            <p>{ JSON.stringify(result) }</p>
+          )
+        : <h2 className='p-2 text-xl'>{ `${searchTerm} not found` }</h2>
+      }
+    </main>
   )
+
+  return content
 }
