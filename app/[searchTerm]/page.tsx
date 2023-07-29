@@ -8,6 +8,11 @@ type Props = {
     }
 }
 
+export async function generateMetadata( { params: { searchTerm } } : Props ) {
+  const wikiData: Promise<SearchResult> = getWikiResults(searchTerm)
+  const data = await wikiData
+}
+
 export default async function SearchResults( { params: { searchTerm } }: Props) {
   const wikiData: Promise<SearchResult> = getWikiResults(searchTerm)
   const data = await wikiData
