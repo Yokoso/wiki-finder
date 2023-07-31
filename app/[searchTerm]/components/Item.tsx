@@ -41,4 +41,6 @@ export default function Item({ result }: Props) {
             { itemTextCol }
         </article>
     )
+
+    return content
 }
