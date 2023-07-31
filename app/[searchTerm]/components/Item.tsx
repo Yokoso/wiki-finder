@@ -18,4 +18,27 @@ export default function Item({ result }: Props) {
         <p>{ result.extract }</p>
     </div>
   )
+
+  const content = result?.thumbnail?.source
+    ? (
+        <article className='max-w-lg m-4'>
+            <div className='flex flex-row gap-4'>
+                <div className='flex flex-col justify-center'>
+                    <img 
+                        src={ result.thumbnail.source }
+                        alt={ result.title }
+                        width={ result.thumbnail.width }
+                        height={ result.thumbnail.height }
+                        loading='lazy'
+                    />
+                </div>
+                { itemTextCol }
+            </div>
+        </article>
+    ) 
+    : (
+        <article className='max-w-lg m-4'>
+            { itemTextCol }
+        </article>
+    )
 }
