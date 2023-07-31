@@ -12,6 +12,17 @@ export async function generateMetadata( { params: { searchTerm } } : Props ) {
   const wikiData: Promise<SearchResult> = getWikiResults(searchTerm)
   const data = await wikiData
   const displayTerm = searchTerm.replaceAll('%20', ' ')
+
+  if (!data?.query?.pages) {
+    return {
+      title: `${displayTerm} Not found.`
+    }
+  }
+
+  return {
+    title: displayTerm,
+    description: `Search results for ${displayTerm}`
+  }
 }
 
 export default async function SearchResults( { params: { searchTerm } }: Props) {
